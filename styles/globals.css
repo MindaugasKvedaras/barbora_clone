@@ -10,6 +10,7 @@ body, * {
 
 :root {
   --red: #FF5D5D;
+  --body-background: #F5F5F5;
 }
 ::-webkit-scrollbar {
   width: 0px;
@@ -25,10 +26,11 @@ max-width: 1600px;
 margin: auto;
 margin-top: 10px;
 width: 100%;
-background-color: #FFFAFA;
-
+background-color: var(--body-background);
 }
-
+.logo {
+  margin: 15px
+}
 .layout{
   padding: 10px;
 }
@@ -36,9 +38,9 @@ background-color: #FFFAFA;
 .navbar-container{
   display: flex;
   justify-content: space-between;
-  margin: 6px 18px;
+  margin: 5px 5px;
   position: relative;
-  background-color: #FFFAFA;
+  background-color: var(--body-background);
 
 }
 .marquee-text{
@@ -79,7 +81,8 @@ background-color: #FFFAFA;
 
 }
 .cart-icon{
-  font-size: 25px;
+  font-size: 35px;
+  margin: 15px;
   color: gray;
   cursor: pointer;
   position: relative;
@@ -141,8 +144,6 @@ background-color: #FFFAFA;
   padding: 0 40px;
   background-color: #FFD700;
   border-radius: 15px;
-  border-style: solid;
-  border-color: grey;
   border-width: 1px;
   position: relative;
   height: 500px;
@@ -163,8 +164,10 @@ background-color: #FFFAFA;
   margin: 0;
   padding: 20px;
   font-size: 30px;
+  font-weight: 500;
   margin-bottom: 30px;
-  background-color: var(--red);
+  color:#fff;
+  background-color: #5FD068;
   border-radius: 15px 0 60px;
 }
 .hero-banner-container button{
@@ -646,12 +649,21 @@ margin-top: 160px;
 
 @media screen and (max-width:800px) {
   .navbar-container {
-    margin: 2px 18px;
+    height: 50px;
+  }
+
+  .css-15mtdxb-MuiPaper-root {
+    margin: 10px;
   }
   .logo {
-    padding-top: 10px;
+    margin-left: 15px;
     width: 80px;
     height: 50px;
+  }
+
+  .cart-icon {
+    margin-right: 15px;
+    font-size: 25px;
   }
   .hero-banner-container{
     height: 560px;
@@ -662,7 +674,9 @@ margin-top: 160px;
   }
   .hero-banner-container .beats-solo {
     width: 388px;
-    border-radius: 15px 15px 50px 0;
+    font-size: 20px;
+    border-radius: 15px 0 60px 0;
+    
   }
   .hero-banner-image{
     width: 67%;
