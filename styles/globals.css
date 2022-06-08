@@ -647,7 +647,7 @@ margin-top: 160px;
   margin-top: 10px;
 }
 
-@media screen and (max-width:800px) {
+@media screen and (max-width:600px) {
   .navbar-container {
     height: 50px;
   }
@@ -667,13 +667,15 @@ margin-top: 160px;
   }
   .hero-banner-container{
     height: 560px;
+    margin: 15px;
+    width: auto;
   }
   .hero-banner-container .solo-container {
-    width: 300px;
-    right: 13%;
+    width: 100px;
+    right: 15%;
   }
   .hero-banner-container .beats-solo {
-    width: 388px;
+    width: 335px;
     font-size: 20px;
     border-radius: 15px 0 60px 0;
     
