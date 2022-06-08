@@ -646,7 +646,11 @@ margin-top: 160px;
     height: 560px;
   }
   .hero-banner-container .solo-container {
-    right: 10.5%;
+    right: 13%;
+  }
+  .hero-banner-container .beats-solo {
+    width: 388px;
+    border-radius: 15px 15px 50px 0;
   }
   .hero-banner-image{
     width: 67%;
