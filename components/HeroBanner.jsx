@@ -17,10 +17,10 @@ const HeroBanner = ({ heroBanner }) => {
         <Link href={`/product/${heroBanner.product}`}>
           <button type="button">{heroBanner.buttonText}</button>
         </Link>
-          <div className="desc">
+          {/* <div className="desc">
           <h5>Aprašymas</h5>
           <p>{heroBanner.desc}</p>
-         </div>
+         </div> */}
         </div>
       </div>
     </div>
