@@ -21,11 +21,13 @@ a {
 }
 
 .main-container{
-max-width: 1400px; 
+max-width: 1600px; 
 margin: auto;
 width: 100%;
+background-color: #FFFAFA;
 
 }
+
 .layout{
   padding: 10px;
 }
@@ -133,17 +135,34 @@ width: 100%;
 }
 
 .hero-banner-container{
-  padding: 100px 40px;
-  background-color: #dcdcdc;
+  padding: 0 40px;
+  background-color: #FFD700;
   border-radius: 15px;
+  border-style: solid;
+  border-color: grey;
+  border-width: 1px;
   position: relative;
   height: 500px;
   line-height: 0.9; 
   width: 100%;
+  z-index: 10;
+
+}
+
+.hero-banner-container .solo-container {
+  margin: 0;
+  position: relative;
+  right: 2.7%;  
+  width: 400px;
 
 }
 .hero-banner-container .beats-solo{
-  font-size: 20px;
+  margin: 0;
+  padding: 20px;
+  font-size: 30px;
+  margin-bottom: 30px;
+  background-color: var(--red);
+  border-radius: 15px 0 60px;
 }
 .hero-banner-container button{
    border-radius: 15px;
@@ -159,8 +178,8 @@ width: 100%;
 }
 
 .hero-banner-container h3{
-  font-size: 4rem;
-  margin-top: 4px;
+  font-size: 2rem;
+  margin-top: 120px;
 }
 .hero-banner-container h1{
   color: white;
@@ -625,6 +644,9 @@ margin-top: 160px;
 @media screen and (max-width:800px) {
   .hero-banner-container{
     height: 560px;
+  }
+  .hero-banner-container .solo-container {
+    right: 10.5%;
   }
   .hero-banner-image{
     width: 67%;
