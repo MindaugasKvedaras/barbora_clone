@@ -23,6 +23,7 @@ a {
 .main-container{
 max-width: 1600px; 
 margin: auto;
+margin-top: 10px;
 width: 100%;
 background-color: #FFFAFA;
 
@@ -37,6 +38,8 @@ background-color: #FFFAFA;
   justify-content: space-between;
   margin: 6px 18px;
   position: relative;
+  background-color: #FFFAFA;
+
 }
 .marquee-text{
   font-size: 29px;
@@ -642,10 +645,19 @@ margin-top: 160px;
 }
 
 @media screen and (max-width:800px) {
+  .navbar-container {
+    margin: 2px 18px;
+  }
+  .logo {
+    padding-top: 10px;
+    width: 80px;
+    height: 50px;
+  }
   .hero-banner-container{
     height: 560px;
   }
   .hero-banner-container .solo-container {
+    width: 300px;
     right: 13%;
   }
   .hero-banner-container .beats-solo {
