@@ -6,13 +6,24 @@ import { client } from '../lib/client';
 import { Product, FooterBanner, HeroBanner } from '../components';
 
 
-const Home = ({ products, bannerData }) => (
+const Home = ({ products, bannerData }) => {
+
+const filtered = products.filter(product => {
+  return product.advertise != null;
+})
+
+return (
     <div>
       <Head>
         <title>BARBORA</title>
       </Head>
-      <HeroBanner heroBanner={bannerData.length && bannerData[0]}  />
-
+      <div>
+        {filtered.map(product => {
+          return (
+         <HeroBanner key={product._id} product={product}  />
+          )
+        })}
+      </div>
       <div className="products-heading">
         <h2>Populiariausios prekės</h2>
         <p>Barboroje apsipirkti apsimoka!</p>
@@ -24,7 +35,8 @@ const Home = ({ products, bannerData }) => (
 
       <FooterBanner FooterBanner={bannerData && bannerData[0]} />
     </div>
-  );
+)
+};
 
 export const getServerSideProps = async () => {
     const query = '*[_type == "product"]';

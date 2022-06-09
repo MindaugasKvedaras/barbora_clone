@@ -37,9 +37,9 @@ export default {
             type: 'string',
         },
         {
-            name: 'largeText1',
-            title: 'LargeText1',
-            type: 'string',
+            name: 'price',
+            title: 'Price',
+            type: 'number',
         },
         {
             name: 'largeText2',

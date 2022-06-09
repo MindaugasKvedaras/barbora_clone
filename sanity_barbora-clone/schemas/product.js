@@ -32,6 +32,11 @@ export default {
             type: 'number',
         },
         {
+            name: 'advertise',
+            title: 'Advertise',
+            type: 'string',
+        },
+        {
             name: 'details',
             title: 'Details',
             type: 'array',
