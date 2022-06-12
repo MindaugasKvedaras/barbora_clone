@@ -112,7 +112,7 @@ background-color: var(--body-background);
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px;
+  gap: 5px;
   margin-top: 20px;
   width: 100%;
 }
