@@ -205,8 +205,8 @@ background-color: var(--body-background);
 
 .product-card_content-btn {
   position: relative;
-  top: 100px;
-  opacity: 0;
+  top: 20px;
+  left: 30px;
   padding: 10px 30px;
   margin-top: 15px;
   color: #fff;
@@ -221,11 +221,11 @@ background-color: var(--body-background);
   transition: 0.5s;
 }
 
-.product-card:hover .product-card_content-btn {
+/* .product-card:hover .product-card_content-btn {
   top: 25px;
   left: 25px;
   opacity: 1;
-}
+} */
 
 .hero-banner-container{
   display: flex;
@@ -898,6 +898,11 @@ margin-top: 160px;
   .product-card-image-price img {
     width: 80px;
     height: 60%;
+  }
+
+  .product-card-tara {
+    font-size: 11px;
+    color: var(--red);
   }
 
   .product-price {

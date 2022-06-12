@@ -32,9 +32,30 @@ export default {
             type: 'number',
         },
         {
+            name: 'amount',
+            title: 'Amount',
+            type: 'number',
+        },
+        {
+            name: 'units',
+            title: 'Units',
+            type: 'string',
+
+        },
+        {
+            name: 'tara',
+            title: 'Tara',
+            type: 'number',
+        },
+        {
             name: 'advertise',
             title: 'Advertise',
             type: 'string',
+        },
+        {
+            name: 'discount',
+            title: 'Discount',
+            type: 'number',
         },
         {
             name: 'details',
