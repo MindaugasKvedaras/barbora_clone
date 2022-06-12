@@ -222,7 +222,8 @@ background-color: var(--body-background);
 }
 
 .product-card:hover .product-card_content-btn {
-  top: 0;
+  top: 25px;
+  left: 25px;
   opacity: 1;
 }
 
@@ -972,7 +973,6 @@ margin-top: 160px;
 .top{
   flex-wrap: wrap;
   gap: 10px;
-
 
 }
 .item-desc .bottom{
