@@ -11,6 +11,7 @@ body, * {
 :root {
   --red: #f02d34;
   --green: #5FD068;
+  --yellow: #FFD93D;
   --body-background: #F5F5F5;
 }
 ::-webkit-scrollbar {
@@ -99,7 +100,7 @@ background-color: var(--body-background);
   right: -8px;
   font-size: 12px;
   color: #eee;
-  background-color: #f02d34;
+  /* background-color: #f02d34; */
   width: 18px;
   height: 18px;
   border-radius: 50%;
@@ -119,16 +120,20 @@ background-color: var(--body-background);
   position: relative;
   width: 320px;
   height: 480px;
-  background: var(--red);
+  /* background: var(--red); */
   border-radius: 20px;
   overflow: hidden;
  cursor: pointer;
+ box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.17 );
+ backdrop-filter: blur( 8px );
+ -webkit-backdrop-filter: blur( 4px );
+
   /* transform: scale(1, 1);
   transition: transform 0.5s ease;
  color: #324d67; */
 }
 
-.product-card::before {
+/* .product-card::before {
   content: "";
   position: absolute;
   top: -45%;
@@ -137,22 +142,21 @@ background-color: var(--body-background);
   background: #fff;
   transform: skewY(345deg);
   transition: 0.5s;
-}
+} */
 
-.product-card:hover::before {
+/* .product-card:hover::before {
   top: -70%;
   transform: skewY(390deg);
-}
+} */
 
-.product-card::after {
-  content: "BARBORA";
+/* .product-card::after {
   position: absolute;
   bottom: 0;
   left: 0;
   font-weight: 600;
   font-size: 4em;
   color: rgba(217, 30, 24, 0.9);
-}
+} */
 /* .product-card:hover{
   transform: scale(1.1,1.1)
 } */
@@ -184,8 +188,8 @@ background-color: var(--body-background);
   font-size: 18px;
   color: white;
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  /* text-transform: uppercase; */
+  /* letter-spacing: 1px; */
   /* font-weight: 500; */
 }
 .product-price{
@@ -767,6 +771,10 @@ margin-top: 160px;
     font-size: 25px;
   }
   .hero-banner-container{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    padding: 0 20px;
     height: 500px;
     margin: 15px;
     width: auto;
@@ -786,7 +794,7 @@ margin-top: 160px;
   .hero-banner-image{
     width: 200px;
     height: 180px;
-    top: 200px;
+    /* top: 250px; */
   }
 
   .footer-banner-container{
@@ -822,20 +830,21 @@ margin-top: 160px;
   }
   .hero-banner-container h1{
     text-align: center;
-    font-size: 35px;
+    font-size: 20px;
     margin: auto;
     width: 100%;
   }
  .hero-banner-container h3{
-    font-size: 50px;
-    margin-top: 90px;
+    font-size: 25px;
+    /* margin-top: 90px; */
     text-align: center;
+    margin-bottom: 10px;
     color:#fff;
   }
   .hero-banner-container button{
-    margin-top: 200px;
-    width: 80%;
-    margin-left: 25px;
+    margin-top: 220px;
+    width: 70%;
+    margin-left: 45px;
     z-index: 10000;
   }
   .desc{
@@ -843,11 +852,92 @@ margin-top: 160px;
   }
   .product-detail-container{
     flex-wrap: wrap;
-    }
+  }
+
   .product-detail-container .product-detail-image{
     width: 350px;
     height: 350px;
   }
+
+  .product-card {
+    display: flex;
+    flex-direction: row;
+    width: 350px;
+    height: 160px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .product-card-discount-label {
+    position: absolute;
+    top: -2px;
+    left: -1px;
+    padding: 12px;
+    margin-left: 0;
+    margin-right: 0;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 25px;
+    background-color: var(--yellow);
+  }
+
+  .product-card-discount-label p {
+    font-size: 12px;
+    color: var(--red);
+    font-weight: 700;
+  }
+
+  .product-card-image-price {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25px;
+  }
+
+  .product-card-image-price img {
+    width: 80px;
+    height: 60%;
+  }
+
+  .product-price {
+    font-size: 15px;
+    color: var(--red);
+    font-weight: 500;
+    margin-top: 0;
+  }
+
+  .product-price-before-discount {
+    margin-top: 10px;
+    font-size: 12px;
+    color: grey;
+    text-decoration: line-through;
+  }
+
+  .product-price-per-unit {
+    font-size: 12px;
+    color: grey;
+  }
+
+  .product-card_content {
+    padding: 15px;
+  }
+
+  .product-name {
+    color: black;
+    font-size: 12px;
+    margin-top: 10px;
+  }
+
+  .product-card_content-btn {
+    font-size: 10px;
+    background-color: var(--red);
+  }
+
+  /* .product-card img {
+    width: 30%;
+    height: 60%;
+    margin-left: 15px;
+  } */
   .cart-container{
     width: 415px;
   padding: 4px;
@@ -882,6 +972,7 @@ margin-top: 160px;
 .top{
   flex-wrap: wrap;
   gap: 10px;
+
 
 }
 .item-desc .bottom{
