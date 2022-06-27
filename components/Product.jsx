@@ -5,7 +5,7 @@ import { urlFor } from '../lib/client';
 
 const Product = ( { product: { image, name, slug, price, discount, amount, units, tara } }) => {
 
-  const discountedPrice = price * (1-(discount/100));
+  const discountedPrice = (price * (1-(discount/100))).toFixed(2);
 
 
   const priceAfterDiscount = () => {

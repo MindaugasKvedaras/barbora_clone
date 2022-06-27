@@ -1,32 +1,68 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import { useRef } from 'react';
+import { useStateContext } from '../context/StateContext';
+import { TextField, Autocomplete, Stack } from '@mui/material';
 
-import Paper from '@mui/material/Paper';
-import InputBase from '@mui/material/InputBase';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
-import DirectionsIcon from '@mui/icons-material/Directions';
 
-const SearchBar = () => {
+import { urlFor, client } from '../lib/client';
+import { productQuery } from '../lib/data';
+// import { ReactSearchAutocomplete } from "react-search-autocomplete";
+import Product from './Product';
+import { Card, Box, Flex, SearchIcon } from '@sanity/ui';
+import ProductTable from './ProductTable';
+
+const SearchProducts = ({products}) => {
+  const [query, setQuery] = useState("");
+
   return (
-    <Paper
-      component="form"
-      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', justifyContent: 'center', maxWidth: 500, margin: 'auto' }}
-    >
-      <IconButton sx={{ p: '10px' }} aria-label="menu">
-        <MenuIcon />
-      </IconButton>
-      <InputBase
-        sx={{ ml: 1, flex: 1 }}
-        placeholder="Ieškoti prekės, pvz.: duona"
-        inputProps={{ 'aria-label': 'search google maps' }}
+    <div>
+      <input 
+        placeholder="ieskoti..."
+        onChange={(e) => setQuery(e.target.value.toLowerCase())}
       />
-      <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
-        <SearchIcon />
-      </IconButton>
-    </Paper>
-  );
+      <ul>
+        {products?.map((product) => 
+        product.name.toLowerCase().includes(query)).map((product) => (
+          <li key={product._id}>
+            {product.name}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+
+}
+//   const [sanityProducts, setSanityProducts] = useState();
+
+//   useEffect(() => {
+//     if (searchTerm !== '') {
+//       const query = searchQuery(searchTerm.toLowerCase());
+//       client.fetch(query).then((data) => {
+//         setSanityProducts(data);
+//       })
+//     } else {
+//       return "Nieko"
+//     }
+//   }, [searchTerm]);
+
+//   return (
+//     <div>
+//       {sanityProducts?.length !== 0 && <Card sanityProducts={sanityProducts} />}
+//     </div>
+//   )
+  
+// }   
+  
+
+
+export const getServerSideProps = async () => {
+  const query = '*[_type == "product"]';
+  const products = await client.fetch(query);
+
+  return {
+    props: { products }
+  }
 }
 
-export default SearchBar;
+
+export default SearchProducts;

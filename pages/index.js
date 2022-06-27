@@ -4,12 +4,17 @@ import Head from 'next/head';
 
 import { client } from '../lib/client';
 import { Product, FooterBanner, HeroBanner } from '../components';
+import SearchProducts from '../components/SearchBar';
 
 
 const Home = ({ products, bannerData }) => {
 
 const filtered = products.filter(product => {
   return product.advertise != null;
+})
+
+const filteredFooterBanner = products.filter(product => {
+  return product.discount < 30 && product.discount > 0;
 })
 
 return (
@@ -33,7 +38,13 @@ return (
         {products?.map((product) => <Product key={product._id} product={product} />)}
       </div>
 
-      <FooterBanner FooterBanner={bannerData && bannerData[0]} />
+      <div>
+        {filteredFooterBanner.map(product => {
+          return (
+         <FooterBanner key={product._id} product={product}  />
+          )
+        })}
+      </div>    
     </div>
 )
 };

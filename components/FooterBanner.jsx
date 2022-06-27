@@ -3,29 +3,40 @@ import Link from 'next/link';
 
 import { urlFor } from '../lib/client';
 
-const FooterBanner = ({ FooterBanner: {
-  discount, largeText1, largeText2, saleTime, smallText, midText, product,
-  buttonText, image, desc } }) => {
+const FooterBanner = ({ product: { image, name, slug, price, advertise, discount } }) => {
+  
+  const discountedPrice = (price * (1-(discount/100))).toFixed(2);
+
+  const priceAfterDiscount = () => {
+    if(discount === 0) {
+      return price;
+    } else {
+      return discountedPrice;
+    }
+  }
+
+  
   return (
     <div className="footer-banner-container">
       <div className="banner-desc">
         <div className="left">
-          <p>{discount}</p>
-          <h3>{largeText1}</h3>
-          <h3>{largeText2}</h3>
-          <p>{saleTime}</p>
+          <p className="left-discount">-{discount}%</p>
+          <h3>{advertise}</h3>
+          {/* <h3>{largeText2}</h3>
+          <p>{saleTime}</p> */}
         </div>
         <img 
-          src={urlFor(image)}
+          src={urlFor(image && image[0])}
+          alt=""
           className="footer-banner-image"
         />
 
         <div className="right">
-          <p>{smallText}</p>
-          <h3>{midText}</h3>
-          <p>{desc}</p>
-          <Link href={`/product/${product}`}>
-            <button type="button">{buttonText}</button>
+          {/* <p>{smalt}</p> */}
+          <h3>{name}</h3>
+          <p>€{priceAfterDiscount()}</p>
+          <Link href={`/product/${slug.current}`}>
+            <button type="button">Į krepšelį</button>
           </Link>
         </div>
       </div>

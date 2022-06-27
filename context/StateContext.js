@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
+import { client } from '../lib/client';
 
 const Context = createContext();
 
@@ -9,9 +10,28 @@ export const StateContext = ({ children }) => {
     const [totalPrice, setTotalPrice] = useState(0);
     const [totalQuantities, setTotalQuantities] = useState(0);
     const [qty, setQty] = useState(1);
+    // const [search, setSearch] = useState('');
+    // const [sanityProducts, setSanityProducts] = useState([]);
 
     let foundProduct;
     let index;
+
+    // const onSearch =  async (products) => {
+          
+    //     if(search)  {
+    //      const searchedProducts = products.filter((product) => 
+    //          product.name.toLowerCase().includes(search)
+    //      );
+         
+    //      window.scrollTo({ top: 1200, left: 100, behavior: 'smooth' });
+
+    //      setSearch('');
+    //      setSanityProducts(searchedProducts);
+
+    
+    //     } 
+    // }
+
 
     const onAdd = (product, quantity) => {
         const checkProductInCart = cartItems.find((item) => item._id === product._id);
@@ -51,6 +71,19 @@ export const StateContext = ({ children }) => {
         setCartItems(newCartItems);
     }
 
+    // const handleSearch = (product) => {
+    //     productFromSanity = cartItems.find((item) => item._id === product._id);
+
+    //     if(search) {
+    //         const searchedProducts = cartItems.filter((item) => item.name.toLowerCase().includes(search));
+    //     }
+
+    //     setSearch(searchedProducts);
+
+    // }
+
+
+
     const toggleCartItemQuantity = (id, value) => {
         foundProduct = cartItems.find((item) => item._id === id)
         index = cartItems.findIndex((product) => product._id === id)
@@ -82,6 +115,7 @@ export const StateContext = ({ children }) => {
         });
     }
 
+
     return (
         <Context.Provider 
             value={{
@@ -98,7 +132,7 @@ export const StateContext = ({ children }) => {
                 onRemove,
                 setCartItems,
                 setTotalPrice,
-                setTotalQuantities
+                setTotalQuantities,
             }}
         
         >
@@ -106,5 +140,18 @@ export const StateContext = ({ children }) => {
         </Context.Provider>
     )
 }
+
+export const getServerSideProps = async () => {
+    const query = '*[_type == "product"]';
+    const products = await client.fetch(query);
+
+    const bannerQuery = '*[_type == "banner"]';
+    const bannerData = await client.fetch(bannerQuery);
+
+    return {
+      props: { products, bannerData }
+    }
+  }
+
 
 export const useStateContext = () => useContext(Context);

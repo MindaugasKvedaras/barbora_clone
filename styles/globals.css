@@ -267,8 +267,8 @@ background-color: var(--body-background);
 .hero-banner-container button{
   border-radius: 15px;
   padding: 10px 16px;
-  background-color: var(--green);
-  color: white;
+  background-color: white;
+  color: var(--red);
   border: none;
   margin-top: 230px;
   margin-left: 170px;
@@ -347,28 +347,33 @@ text-align: end;
 }
 .footer-banner-container{
   padding: 100px 40px;
+  margin: 15px;
   background-color: #f02d34;
   border-radius: 15px;
   position: relative;
   height: 400px;
   line-height: 1; 
   color: white;
-  width: 100%;
+  width: auto;
   margin-top: 120px;
 }
 .banner-desc{
   display: flex ;
   justify-content: space-between;
+  padding-top: 25px;
 }
 .banner-desc button{
-  border-radius: 15px;
+  border-radius: 30px;
   padding: 10px 16px;
+  width: 70%;
   background-color: white;
   color: red;
   border: none;
-  margin-top: 40px;
+  margin-left: 45px;
+  margin-top: 220px;
   font-size: 18px;
   font-weight: 500;
+  text-transform: uppercase;
   cursor: pointer;
 }
 .banner-desc .left h3{
@@ -379,13 +384,33 @@ text-align: end;
 .banner-desc .left p{
   margin:18px;
 }
+
+.left-discount {
+    position: absolute;
+    top: -18px;
+    left: -19px;
+    padding: 20px;
+    margin-left: 0;
+    margin-right: 0;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+    color: var(--red);
+    font-weight: 600;
+    font-size: 25px;
+    background-color: var(--yellow);
+}
 .footer-banner-image{
   position: absolute;
-  /* top: -35%;
-  left: 8%; */
-  top: -25%;
-  left: 25%;
+  top: 210px;
+  margin-right: auto;
+  margin-left: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  width: 300px;
+  height: 230px;
 }
+
 .banner-desc .right{
   line-height: 1.4;
 }
@@ -394,7 +419,7 @@ text-align: end;
   font-size: 60px;
 }
 .banner-desc .right p{
-  font-size: 18px;
+  font-size: 28px;
 }
 .banner-desc .right .company-desc{
   font-size: 14px;
@@ -758,9 +783,10 @@ margin-top: 160px;
     height: 50px;
   }
 
-  .css-15mtdxb-MuiPaper-root {
-    margin: 10px;
+  .MuiOutlinedInput-input {
+    height: .7rem;
   }
+
   .logo {
     margin-left: 15px;
     width: 80px;
@@ -799,14 +825,12 @@ margin-top: 160px;
   }
 
   .footer-banner-container{
-    height: 660px;
+    height: 620px;
     margin-top: 40px;
+    padding-top: 50px;
   }
   .footer-banner-image{
-    width: 77%;
-    left: 22%;
-    top: 66%;
-    height: 36%
+    top: 46%;
   }
   .banner-desc .left h3{
     font-weight: 900;
@@ -820,7 +844,7 @@ margin-top: 160px;
     font-size: 45px;
   }
   .banner-desc .right p{
-    font-size: 18px;
+    font-size: 28px;
   }
   .banner-desc .right .company-desc{
     font-size: 14px;
