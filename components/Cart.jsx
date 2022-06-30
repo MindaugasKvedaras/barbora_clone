@@ -7,10 +7,11 @@ import toast from 'react-hot-toast';
 import { useStateContext } from '../context/StateContext';
 import { urlFor } from '../lib/client';
 import getStripe from '../lib/getStripe';
+import product from '../sanity_barbora-clone/schemas/product';
 
 const Cart = () => {
   const cartRef = useRef();
-  const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity, onRemove } = useStateContext();
+  const { taraPrice, subTotalPrice, totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity, onRemove } = useStateContext();
 
   const handleCheckout = async () => {
     const stripe = await getStripe();
@@ -40,8 +41,8 @@ const Cart = () => {
         className="cart-heading"
         onClick={() => setShowCart(false)}>
           <AiOutlineLeft />
-          <span className="heading">Jūsų krepšelis</span>
-          <span className="cart-num-items">({totalQuantities} items)</span>
+          <span className="heading">Jūsų krepšelis:</span>
+          <span className="cart-num-items">prekių ({totalQuantities})</span>
         </button>
 
         {cartItems.length < 1 && (
@@ -67,7 +68,7 @@ const Cart = () => {
               <div className="item-desc">
                 <div className="flex top">
                   <h5>{item.name}</h5>
-                  <h4>{item.price}€</h4>
+                  <h4>€{item.price * (1-(item.discount/100)).toFixed(2)}</h4>
                 </div>
                 <div className="flex bottom">
                   <div>
@@ -94,9 +95,21 @@ const Cart = () => {
         {cartItems.length >= 1 && (
           <div className="cart-bottom">
             <div className="total">
-              <h3>Viso:</h3>
-              <h3>{totalPrice.toFixed(2)}€</h3>
+              <h3>Mokėtina suma už prekes:</h3>
+              <h3>€{totalPrice.toFixed(2)}</h3>
             </div>
+            {cartItems.find((item) => item.tara > 0) && (
+            <>
+            <div className="total">
+              <h4>Papildomas mokestis už tarą:</h4>
+              <h4>+ €{taraPrice.toFixed(2)}</h4>
+            </div>
+            <div className="total">
+              <h3>Galutinė mokėtina suma:</h3>
+              <h3>€{subTotalPrice.toFixed(2)}</h3>
+            </div>
+            </>
+        )}
             <div className="btn-container">
               <button type="button" className="btn" onClick={handleCheckout}>
                 Apmokėti

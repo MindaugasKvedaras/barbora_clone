@@ -6,7 +6,7 @@ import { Product } from '../../components';
 import { useStateContext } from '../../context/StateContext';
 
 const ProductDetails = ({ product, products, banner }) => {
-    const { image, name, details, price } = product;
+    const { image, name, details, price, discount, tara } = product;
     const [index, setIndex] = useState(0);
     const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
   
@@ -15,6 +15,17 @@ const ProductDetails = ({ product, products, banner }) => {
 
       setShowCart(true);
     }
+
+    const discountedPrice = (price * (1-(discount/100))).toFixed(2);
+
+    const priceAfterDiscount = () => {
+      if(discount === 0) {
+        return price;
+      } else {
+        return discountedPrice;
+      }
+    }
+  
 
     return (
     <div>
@@ -49,7 +60,7 @@ const ProductDetails = ({ product, products, banner }) => {
                 </div>
                 <h4>Prekės aprašymas:</h4>
                 <p>{details}</p>
-                <p className="price">{price}€</p>
+                <p className="price">€{priceAfterDiscount()}</p>
                 <div className="quantity">
                     <h3>Kiekis:</h3>
                     <p className="quantity-desc">

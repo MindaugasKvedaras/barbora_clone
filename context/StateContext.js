@@ -8,35 +8,23 @@ export const StateContext = ({ children }) => {
     const [showCart, setShowCart] = useState(false);
     const [cartItems, setCartItems] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
+    const [subTotalPrice, setSubTotalPrice] = useState(0);
     const [totalQuantities, setTotalQuantities] = useState(0);
+    const [taraPrice, setTaraPrice] = useState(0);
     const [qty, setQty] = useState(1);
-    // const [search, setSearch] = useState('');
-    // const [sanityProducts, setSanityProducts] = useState([]);
 
-    let foundProduct;
-    let index;
 
-    // const onSearch =  async (products) => {
-          
-    //     if(search)  {
-    //      const searchedProducts = products.filter((product) => 
-    //          product.name.toLowerCase().includes(search)
-    //      );
-         
-    //      window.scrollTo({ top: 1200, left: 100, behavior: 'smooth' });
-
-    //      setSearch('');
-    //      setSanityProducts(searchedProducts);
-
-    
-    //     } 
-    // }
+   
 
 
     const onAdd = (product, quantity) => {
         const checkProductInCart = cartItems.find((item) => item._id === product._id);
+        
+        setTaraPrice((prevTaraPrice) => prevTaraPrice + product.tara * quantity)        
+        setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price * (1-(product.discount/100)).toFixed(2) * quantity);
+        
+        setSubTotalPrice((prevTotalPrice) => prevTotalPrice + (product.tara + product.price * (1-(product.discount/100)).toFixed(2)) * quantity);
 
-        setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price * quantity);
         setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity);
 
         if(checkProductInCart) {
@@ -63,42 +51,35 @@ export const StateContext = ({ children }) => {
     }
 
     const onRemove = (product) => {
-        foundProduct = cartItems.find((item) => item._id === product._id);
+        const foundProduct = cartItems.find((item) => item._id === product._id);
         const newCartItems = cartItems.filter((item) => item._id !== product._id);
 
-        setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price * foundProduct.quantity)
+        setTaraPrice((prevTaraPrice) => prevTaraPrice - foundProduct.tara * foundProduct.quantity)
+        setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price * (1-(foundProduct.discount/100)).toFixed(2) * foundProduct.quantity)
         setTotalQuantities(prevTotalQuantities => prevTotalQuantities - foundProduct.quantity);
         setCartItems(newCartItems);
     }
 
-    // const handleSearch = (product) => {
-    //     productFromSanity = cartItems.find((item) => item._id === product._id);
-
-    //     if(search) {
-    //         const searchedProducts = cartItems.filter((item) => item.name.toLowerCase().includes(search));
-    //     }
-
-    //     setSearch(searchedProducts);
-
-    // }
-
-
 
     const toggleCartItemQuantity = (id, value) => {
-        foundProduct = cartItems.find((item) => item._id === id)
-        index = cartItems.findIndex((product) => product._id === id)
+        const foundProduct = cartItems.find((item) => item._id === id)
+        const index = cartItems.findIndex((product) => product._id === id)
         const newCartItems = cartItems.filter((item) => item._id !== id)
 
         if (value === 'inc') {
             newCartItems.splice(index, 0, { ...foundProduct, quantity: foundProduct.quantity + 1 });
-            setCartItems(newCartItems);            
-            setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price)
+            setCartItems(newCartItems);
+            setTaraPrice((prevTaraPrice) => prevTaraPrice + foundProduct.tara)            
+            setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price * (1-(foundProduct.discount/100)).toFixed(2))
+            setSubTotalPrice((prevSubTotalPrice) => prevSubTotalPrice + foundProduct.tara + foundProduct.price * (1-(foundProduct.discount/100)).toFixed(2))
             setTotalQuantities(prevTotalQuantities => prevTotalQuantities + 1)
         } else if (value === 'dec') {
             if(foundProduct.quantity > 1) {
                 newCartItems.splice(index, 0, { ...foundProduct, quantity: foundProduct.quantity - 1 });
-                setCartItems(newCartItems);                
-                setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price)
+                setCartItems(newCartItems);  
+                setTaraPrice((prevTaraPrice) => prevTaraPrice - foundProduct.tara)                          
+                setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price * (1-(foundProduct.discount/100)).toFixed(2))
+                setSubTotalPrice((prevSubTotalPrice) => prevSubTotalPrice - foundProduct.tara - foundProduct.price * (1-(foundProduct.discount/100)).toFixed(2))
                 setTotalQuantities(prevTotalQuantities => prevTotalQuantities - 1)
             }
         }
@@ -133,6 +114,8 @@ export const StateContext = ({ children }) => {
                 setCartItems,
                 setTotalPrice,
                 setTotalQuantities,
+                subTotalPrice,
+                taraPrice,
             }}
         
         >
