@@ -532,6 +532,14 @@ padding: 20px 10px;
   display: flex;
   justify-content: space-between;
 }
+
+.total-tara {
+  display: flex;
+  justify-content: space-between;
+  color: var(--red);
+  font-size: 12px;
+  font-style: italic;
+}
 .total h3{
   font-size: 22px;
 
@@ -888,7 +896,7 @@ margin-top: 160px;
 
   .product-detail-container .product-detail-image{
     width: 350px;
-    height: 350px;
+    height: 250px;
   }
 
   .product-card {

@@ -99,9 +99,9 @@ const Cart = () => {
             </div>
             {cartItems.find((item) => item.tara > 0) && (
             <>
-            <div className="total">
+            <div className="total-tara">
               <h4>Papildomas mokestis už tarą:</h4>
-              <h4>+ €{taraPrice.toFixed(2)}</h4>
+              <h4>+ €{taraPrice.toFixed(2)} vnt.</h4>
             </div>
             <div className="total">
               <h3>Galutinė mokėtina suma:</h3>
