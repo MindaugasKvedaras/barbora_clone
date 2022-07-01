@@ -60,7 +60,16 @@ const ProductDetails = ({ product, products, banner }) => {
                 </div>
                 <h4>Prekės aprašymas:</h4>
                 <p>{details}</p>
-                <p className="price">€{priceAfterDiscount()}</p>
+                {discount > 0 ? (
+                  <>
+                  <p className="price-old">€{price}</p>
+                  <p className="price">€{priceAfterDiscount()}</p>
+                  </>
+                ) : (
+                  <>
+                  <p className="price">€{priceAfterDiscount()}</p>
+                  </>
+                )}  
                 <div className="quantity">
                     <h3>Kiekis:</h3>
                     <p className="quantity-desc">

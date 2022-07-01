@@ -164,7 +164,7 @@ background-color: var(--body-background);
   position: relative;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   padding-top: 20px;
   z-index: 1;
@@ -204,9 +204,10 @@ background-color: var(--body-background);
 }
 
 .product-card_content-btn {
-  position: relative;
-  top: 20px;
-  left: 30px;
+  position: absolute;
+  top: 60px;
+  left: 60px;
+  width: 140px;
   padding: 10px 30px;
   margin-top: 15px;
   color: #fff;
@@ -623,9 +624,6 @@ padding: 20px 10px;
 .product-detail-desc h4{
   margin-top: 10px;
 }
-.product-detail-desc p{
-  margin-top: 10px;
-}
 .reviews p{
   color: #324d67;
   margin-top: 0px;
@@ -633,13 +631,21 @@ padding: 20px 10px;
 .product-detail-desc .price{
   font-weight: 700 ;
   font-size: 26px;
-  margin-top: 30px;
+  margin-top: 10px;
   color:#f02d34;
 }
-.price .old-price, .product-price .old-price, .price .old-price{
+.price-old{
+  margin-top: 25px;
   color: gray;
   text-decoration: line-through;
 }
+
+.price-old-product_card{
+  color: gray;
+  text-decoration: line-through;
+  font-size: 12px;
+}
+
 .product-detail-desc .quantity{
   display: flex;
   gap: 20px;
@@ -841,10 +847,11 @@ margin-top: 160px;
     margin:18px;
   }
   .banner-desc .right h3{
-    font-size: 45px;
+    font-size: 30px;
   }
   .banner-desc .right p{
     font-size: 28px;
+    margin-top: 25px;
   }
   .banner-desc .right .company-desc{
     font-size: 14px;
@@ -889,7 +896,6 @@ margin-top: 160px;
     flex-direction: row;
     width: 350px;
     height: 160px;
-    justify-content: center;
     align-items: center;
   }
 
@@ -950,6 +956,7 @@ margin-top: 160px;
 
   .product-card_content {
     padding: 15px;
+    margin-bottom: 51px;;
   }
 
   .product-name {

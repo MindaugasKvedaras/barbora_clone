@@ -48,10 +48,17 @@ const Product = ( { product: { image, name, slug, price, discount, amount, units
             height={250}
             className="product-image"
             />
-          {tara != null ? (
+          {tara > 0 ? (
           <>
             <p className='product-card-tara'>€{tara} x Tara</p>
           </>
+          ) : (
+            null
+          )}
+          {discount > 0 ? (
+            <>
+              <p className="price-old-product_card">€{price}</p>
+            </>
           ) : (
             null
           )}

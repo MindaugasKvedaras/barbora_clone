@@ -4,7 +4,6 @@ import Head from 'next/head';
 
 import { client } from '../lib/client';
 import { Product, FooterBanner, HeroBanner } from '../components';
-import SearchProducts from '../components/SearchBar';
 
 
 const Home = ({ products, bannerData }) => {

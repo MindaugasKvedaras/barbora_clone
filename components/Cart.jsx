@@ -7,7 +7,6 @@ import toast from 'react-hot-toast';
 import { useStateContext } from '../context/StateContext';
 import { urlFor } from '../lib/client';
 import getStripe from '../lib/getStripe';
-import product from '../sanity_barbora-clone/schemas/product';
 
 const Cart = () => {
   const cartRef = useRef();
@@ -68,7 +67,7 @@ const Cart = () => {
               <div className="item-desc">
                 <div className="flex top">
                   <h5>{item.name}</h5>
-                  <h4>€{item.price * (1-(item.discount/100)).toFixed(2)}</h4>
+                  <h4>€{(item.price * (1-(item.discount/100))).toFixed(2)}</h4>
                 </div>
                 <div className="flex bottom">
                   <div>
