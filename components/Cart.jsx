@@ -69,13 +69,16 @@ const Cart = () => {
                   <h5>{item.name}</h5>
                   <h4>€{(item.price * (1-(item.discount/100))).toFixed(2)}</h4>
                 </div>
+                {/* <div className="product-container_tara-price">
+                  <p>{item.tara != 0 ? "+€" + item.tara + "vnt. už tarą": null}</p>
+                </div> */}
                 <div className="flex bottom">
                   <div>
                   <p className="quantity-desc">
                     <span className="minus" onClick={() => toggleCartItemQuantity(item._id, 'dec') }>
                     <AiOutlineMinus />
                     </span>
-                    <span className="num" onClick="">{item.quantity}</span>
+                    <span className="num" onClick="">{item.quantity} vnt.</span>
                     <span className="plus" onClick={() => toggleCartItemQuantity(item._id, 'inc') }><AiOutlinePlus /></span>
                   </p>
                   </div>
@@ -86,6 +89,9 @@ const Cart = () => {
                   >
                     <TiDeleteOutline />
                   </button>
+                  <div className="hide">
+                    <p>Pašalinti prekę</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -101,7 +107,10 @@ const Cart = () => {
             <>
             <div className="total-tara">
               <h4>Papildomas mokestis už tarą:</h4>
-              <h4>+ €{taraPrice.toFixed(2)} vnt.</h4>
+              <h4>+ €{taraPrice.toFixed(2)} už {cartItems.map((item) => (
+                <>{item.tara === 0 ? '' : item.quantity + " vnt."}</>
+              ))}
+              </h4>
             </div>
             <div className="total">
               <h3>Galutinė mokėtina suma:</h3>

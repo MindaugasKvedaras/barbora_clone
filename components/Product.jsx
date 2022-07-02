@@ -48,6 +48,10 @@ const Product = ( { product: { image, name, slug, price, discount, amount, units
             height={250}
             className="product-image"
             />
+          <div>
+          <p className="product-name">{name + ", " + amount + " " + units}</p>
+
+          </div>
           {tara > 0 ? (
           <>
             <p className='product-card-tara'>€{tara} x Tara</p>
@@ -57,16 +61,15 @@ const Product = ( { product: { image, name, slug, price, discount, amount, units
           )}
           {discount > 0 ? (
             <>
-              <p className="price-old-product_card">€{price}</p>
+              <p><span className="price-old-product_card">€{price}</span> <span className="product-price">€{priceAfterDiscount()}</span></p>
+              
             </>
           ) : (
-            null
+            <p className="product-price"> €{priceAfterDiscount()}</p>
           )}
-          <p className="product-price">€{priceAfterDiscount()}</p>
           <p className="product-price-per-unit">{pricePerUnits()}</p>
         </div>
           <div className="product-card_content">
-            <p className="product-name">{name + ", " + amount + " " + units}</p>
             <Link href={`/product/${slug.current}`}>
               <button type="button" className="product-card_content-btn">Į krepšelį</button>
             </Link>
