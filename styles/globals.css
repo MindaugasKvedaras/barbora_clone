@@ -145,6 +145,7 @@ background-color: var(--body-background);
   flex-direction: column;
   width: 240px;
   height: 360px;
+  border-top-left-radius: 20px; 
   align-items: center;
   justify-content: center;
 }
@@ -968,7 +969,6 @@ margin-top: 160px;
     flex-direction: column;
     width: 350px;
     height: 160px;
-    border-top-left-radius: 20px; 
     align-items: flex-start;
   }
 
