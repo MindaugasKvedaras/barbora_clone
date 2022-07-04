@@ -45,18 +45,17 @@ export const StateContext = ({ children }) => {
         }
 
         toast.success(`${qty} ${product.name} pridėti į krepšelį`);
-        // setQty(1);
+        setQty(1);
     }
 
 
     const onAddFromCard = (product, quantity) => {
         const checkProductInCart = cartItems.find((item) => item._id === product._id);
-        const updatedQty = cartItems.find((item) => item._id === product._id);
 
         setTaraPrice((prevTaraPrice) => prevTaraPrice + product.tara * quantity)        
         setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price * (1-(product.discount/100)).toFixed(2));
         
-        setSubTotalPrice((prevTotalPrice) => prevTotalPrice + (product.tara + product.price * (1-(product.discount/100)).toFixed(2)));
+        setSubTotalPrice((prevTotalPrice) => prevTotalPrice + (product.tara + product.price * (1-(product.discount/100)).toFixed(2) * quantity ));
 
         setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
 
@@ -136,7 +135,9 @@ export const StateContext = ({ children }) => {
         setTaraPrice((prevTaraPrice) => prevTaraPrice - foundProduct.tara * foundProduct.quantity)
         setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price * (1-(foundProduct.discount/100)).toFixed(2) * foundProduct.quantity)
         setTotalQuantities(prevTotalQuantities => prevTotalQuantities - foundProduct.quantity);
+        setSubTotalPrice((prevTotalPrice) => prevTotalPrice - (product.tara + product.price * (1-(product.discount/100)).toFixed(2)) * foundProduct.quantity);
         setCartItems(newCartItems);
+
     }
 
     const toggleProductQty = (product) => {
@@ -147,11 +148,10 @@ export const StateContext = ({ children }) => {
             if(foundProduct._id === product._id)
                 return {
                     quantity: foundProduct.quantity + 1
-                }
+                } 
             })
             setProductQty(newProductQty);
         }
-
     }
 
     const toggleCartItemQuantity = (id, value) => {

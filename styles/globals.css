@@ -778,9 +778,9 @@ padding: 20px 10px;
 }
 
 .quantity-desc{
-  border-radius: 20px;
+  border-radius: 15px;
   border: 1px solid gray;
-  padding: 6px;
+  padding: 4px;
 }
 
 
@@ -791,7 +791,7 @@ padding: 20px 10px;
 }
 .quantity-desc span{
   font-size: 12px;
-  padding: 4px 16px;
+  padding: 6.2px 16px;
   cursor: pointer;
 }
 

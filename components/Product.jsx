@@ -21,7 +21,7 @@ const Product = ( {product }) => {
   }
 
   const handleAddSecondTime = () => {
-    onAddFromCard(product, qty)
+    onAdd(product, qty)
     setVisible(false);
   }
 
