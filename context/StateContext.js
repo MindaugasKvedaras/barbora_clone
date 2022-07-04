@@ -12,9 +12,7 @@ export const StateContext = ({ children }) => {
     const [totalQuantities, setTotalQuantities] = useState(0);
     const [taraPrice, setTaraPrice] = useState(0);
     const [qty, setQty] = useState(1);
-
-
-   
+    const [productQty, setProductQty] = useState(1);
 
 
     const onAdd = (product, quantity) => {
@@ -47,8 +45,89 @@ export const StateContext = ({ children }) => {
         }
 
         toast.success(`${qty} ${product.name} pridėti į krepšelį`);
+        // setQty(1);
+    }
+
+
+    const onAddFromCard = (product, quantity) => {
+        const checkProductInCart = cartItems.find((item) => item._id === product._id);
+        const updatedQty = cartItems.find((item) => item._id === product._id);
+
+        setTaraPrice((prevTaraPrice) => prevTaraPrice + product.tara * quantity)        
+        setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price * (1-(product.discount/100)).toFixed(2));
+        
+        setSubTotalPrice((prevTotalPrice) => prevTotalPrice + (product.tara + product.price * (1-(product.discount/100)).toFixed(2)));
+
+        setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
+
+
+        if(checkProductInCart) {
+            const updatedCartItems = cartItems.map((cartProduct) => {
+                if(cartProduct._id === product._id)
+                return {
+                    ...cartProduct,
+                    quantity: cartProduct.quantity + 1
+                }
+    
+
+                return cartProduct 
+            })
+
+    
+
+            setCartItems(updatedCartItems);
+
+        } else {
+            product.quantity = quantity;
+            
+            setCartItems([...cartItems, {...product }]);
+        }
+
+        toast.success(`${qty} ${product.name} pridėti į krepšelį`);
         setQty(1);
     }
+
+    const onRemoveFromCard = (product, quantity) => {
+        const checkProductInCart = cartItems.find((item) => item._id === product._id);
+        
+        setTaraPrice((prevTaraPrice) => prevTaraPrice + product.tara * quantity) 
+        
+        
+        setTotalPrice((prevTotalPrice) => {
+            if(totalPrice <= product.price * (1-(product.discount/100)).toFixed(2))
+            return product.price * (1-(product.discount/100)).toFixed(2)
+            return prevTotalPrice - product.price * (1-(product.discount/100)).toFixed(2);
+        })
+        
+
+        setSubTotalPrice((prevTotalPrice) => prevTotalPrice - (product.tara + product.price * (1-(product.discount/100)).toFixed(2)));
+
+        setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1);
+
+        if(checkProductInCart) {
+            const updatedCartItems = cartItems.map((cartProduct) => {
+                if(cartProduct._id === product._id)
+                return {
+                    ...cartProduct,
+                    quantity: cartProduct.quantity - 1
+                }
+
+                return cartProduct 
+            })
+
+            setCartItems(updatedCartItems);
+
+        } else {
+            product.quantity = quantity;
+            
+            setCartItems([...cartItems, {...product }]);
+        }
+
+        toast.success(`${qty} ${product.name} pridėti į krepšelį`);
+
+        setQty(1);
+    }
+
 
     const onRemove = (product) => {
         const foundProduct = cartItems.find((item) => item._id === product._id);
@@ -60,6 +139,20 @@ export const StateContext = ({ children }) => {
         setCartItems(newCartItems);
     }
 
+    const toggleProductQty = (product) => {
+        const foundProduct = cartItems.find((item) => item._id === product._id)
+
+        if(foundProduct) {
+            const newProductQty = cartItems.filter((foundProduct) => {
+            if(foundProduct._id === product._id)
+                return {
+                    quantity: foundProduct.quantity + 1
+                }
+            })
+            setProductQty(newProductQty);
+        }
+
+    }
 
     const toggleCartItemQuantity = (id, value) => {
         const foundProduct = cartItems.find((item) => item._id === id)
@@ -73,6 +166,7 @@ export const StateContext = ({ children }) => {
             setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price * (1-(foundProduct.discount/100)).toFixed(2))
             setSubTotalPrice((prevSubTotalPrice) => prevSubTotalPrice + foundProduct.tara + foundProduct.price * (1-(foundProduct.discount/100)).toFixed(2))
             setTotalQuantities(prevTotalQuantities => prevTotalQuantities + 1)
+            setQty
         } else if (value === 'dec') {
             if(foundProduct.quantity > 1) {
                 newCartItems.splice(index, 0, { ...foundProduct, quantity: foundProduct.quantity - 1 });
@@ -80,7 +174,7 @@ export const StateContext = ({ children }) => {
                 setTaraPrice((prevTaraPrice) => prevTaraPrice - foundProduct.tara)                          
                 setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price * (1-(foundProduct.discount/100)).toFixed(2))
                 setSubTotalPrice((prevSubTotalPrice) => prevSubTotalPrice - foundProduct.tara - foundProduct.price * (1-(foundProduct.discount/100)).toFixed(2))
-                setTotalQuantities(prevTotalQuantities => prevTotalQuantities - 1)
+                setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1)
             }
         }
     }
@@ -92,6 +186,13 @@ export const StateContext = ({ children }) => {
     const decQty = () => {
         setQty((prevQty) => { 
             if(prevQty - 1 < 1) return 1;
+            return prevQty - 1;
+        });
+    }
+
+    const decQtyFromCard = () => {
+        setQty((prevQty) => { 
+            if(prevQty - 1 <= 0 ) return 0
             return prevQty - 1;
         });
     }
@@ -116,6 +217,12 @@ export const StateContext = ({ children }) => {
                 setTotalQuantities,
                 subTotalPrice,
                 taraPrice,
+                onAddFromCard,
+                onRemoveFromCard,
+                productQty,
+                setProductQty,
+                toggleProductQty,
+                decQtyFromCard,
             }}
         
         >

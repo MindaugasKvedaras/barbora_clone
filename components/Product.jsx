@@ -1,12 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
+import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+
 
 import { urlFor } from '../lib/client';
+import { useStateContext } from '../context/StateContext';
 
-const Product = ( { product: { image, name, slug, price, discount, amount, units, tara } }) => {
 
+const Product = ( {product }) => {
+
+  const { id, image, name, slug, amount, units, details, price, discount, tara, quantity } = product;
+  const { decQtyFromCard, setQty, cartItems, productQty, decQty, qty, incQty, onAdd, onRemove, onAddFromCard, onRemoveFromCard } = useStateContext();
   const discountedPrice = (price * (1-(discount/100))).toFixed(2);
 
+  const [visible, setVisible] = useState(false);
+
+  const handleAddCart = () => {
+    onAdd(product, qty)
+    setVisible(true);
+  }
+
+  const handleAddSecondTime = () => {
+    onAddFromCard(product, qty)
+    setVisible(false);
+  }
+
+
+  const handleRemoveFromCard = () => {
+    onRemoveFromCard(product)
+    setVisible(false);
+  }
+
+  const visibleTrue = () => {
+    setVisible(true);
+  }
 
   const priceAfterDiscount = () => {
     if(discount === 0) {
@@ -31,7 +58,7 @@ const Product = ( { product: { image, name, slug, price, discount, amount, units
 
   return (
     <div>
-        <div className="product-card">
+        <div className="product-card" key={product._id}>
         {discount > 0 ? (
           <>
             <div className="product-card-discount-label">
@@ -41,6 +68,8 @@ const Product = ( { product: { image, name, slug, price, discount, amount, units
         ) : (
           null
         )}
+        <Link href={`/product/${slug.current}`}>
+
         <div className="product-card-image-price">
            <img 
             src={urlFor(image && image[0])} 
@@ -49,9 +78,11 @@ const Product = ( { product: { image, name, slug, price, discount, amount, units
             className="product-image"
             />
           <div>
+          
           <p className="product-name">{name + ", " + amount + " " + units}</p>
 
           </div>
+          
           {tara > 0 ? (
           <>
             <p className='product-card-tara'>€{tara} x Tara</p>
@@ -69,11 +100,31 @@ const Product = ( { product: { image, name, slug, price, discount, amount, units
           )}
           <p className="product-price-per-unit">{pricePerUnits()}</p>
         </div>
+        </Link>
+        {!visible ? 
           <div className="product-card_content">
-            <Link href={`/product/${slug.current}`}>
-              <button type="button" className="product-card_content-btn">Į krepšelį</button>
-            </Link>
+              <button type="button" className="product-card_content-btn"  onClick={handleAddCart}>Į krepšelį</button>
           </div>
+          :
+          qty >= 1 ? 
+          <>
+            <div className="quantity-card">
+              <p className="quantity-desc-card">
+                  <span className="minus" onClick={decQtyFromCard}><AiOutlineMinus /></span>
+                  <span className="num">{qty}</span>
+                  <span className="plus" onClick={incQty}><AiOutlinePlus /></span>
+              </p>
+            </div>
+            <div className="product-card_content">
+              <button type="button" className="product-card_content-btn"  onClick={handleAddSecondTime}>Į krepšelį</button>
+            </div>
+          </>
+            : 
+            <div className="remove-from-cart">
+              <p>Pašalinti prekę iš sąrašo?</p>
+              <p><span className="yes" onClick={handleRemoveFromCard}>Taip</span><span className="no" onClick={handleAddCart}>Ne</span></p>
+            </div>
+        }
         </div>
     </div>
   );
