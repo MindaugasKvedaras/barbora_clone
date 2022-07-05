@@ -23,6 +23,10 @@ const Product = ( {product }) => {
     setVisible(true);
   }
 
+  const notRemoveFromCard = () => {
+    setVisible(false);
+  }
+
   const handleAddSecondTime = () => {
     onAdd(product, qty)
     setVisible(false);
@@ -121,7 +125,7 @@ const Product = ( {product }) => {
             : 
             <div className="remove-from-cart">
               <p>Pašalinti prekę iš sąrašo?</p>
-              <p><span className="yes" onClick={handleRemoveFromCard}>Taip</span><span className="no" onClick={handleAddCart}>Ne</span></p>
+              <p><span className="yes" onClick={handleRemoveFromCard}>Taip</span><span className="no" onClick={notRemoveFromCard}>Ne</span></p>
             </div>
         }
         </div>

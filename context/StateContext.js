@@ -101,6 +101,7 @@ export const StateContext = ({ children }) => {
         setSubTotalPrice((prevTotalPrice) => prevTotalPrice - (product.tara + product.price * (1-(product.discount/100)).toFixed(2)));
 
         setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1);
+        
 
         if(checkProductInCart) {
             const updatedCartItems = cartItems.map((cartProduct) => {
@@ -121,8 +122,6 @@ export const StateContext = ({ children }) => {
             setCartItems([...cartItems, {...product }]);
         }
 
-        toast.success(`${qty} ${product.name} pridėti į krepšelį`);
-
         setQty(1);
     }
 
@@ -137,20 +136,6 @@ export const StateContext = ({ children }) => {
         setSubTotalPrice((prevTotalPrice) => prevTotalPrice - (product.tara + product.price * (1-(product.discount/100)).toFixed(2)) * foundProduct.quantity);
         setCartItems(newCartItems);
 
-    }
-
-    const toggleProductQty = (product) => {
-        const foundProduct = cartItems.find((item) => item._id === product._id)
-
-        if(foundProduct) {
-            const newProductQty = cartItems.filter((foundProduct) => {
-            if(foundProduct._id === product._id)
-                return {
-                    quantity: foundProduct.quantity + 1
-                } 
-            })
-            setProductQty(newProductQty);
-        }
     }
 
     const toggleCartItemQuantity = (id, value) => {
@@ -218,7 +203,6 @@ export const StateContext = ({ children }) => {
                 taraPrice,
                 onAddFromCard,
                 onRemoveFromCard,
-                toggleProductQty,
                 decQtyFromCard,
             }}
         
