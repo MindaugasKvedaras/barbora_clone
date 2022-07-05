@@ -10,7 +10,7 @@ import { useStateContext } from '../context/StateContext';
 const Product = ( {product }) => {
 
   const { image, name, slug, amount, units, price, discount, tara } = product;
-  const { decQtyFromCard, qty, incQty, onAdd, onRemoveFromCard } = useStateContext();
+  const { decQtyFromCard, qty, incQty, onAdd, onRemove, onRemoveFromCard } = useStateContext();
 
   const discountedPrice = (price * (1-(discount/100))).toFixed(2).replace(/\./g, ',');
   const ltPrice = price.toFixed(2).replace(/\./g, ',');
@@ -34,7 +34,7 @@ const Product = ( {product }) => {
 
 
   const handleRemoveFromCard = () => {
-    onRemoveFromCard(product)
+    onRemove(product)
     setVisible(false);
   }
 
