@@ -253,6 +253,12 @@ background-color: var(--body-background);
   text-decoration: line-through;
   font-size: 12px;
 }
+
+.price-old-product_banner{
+  color: #fff;
+  text-decoration: line-through;
+  font-size: 12px;
+}
 /* .product-card:hover .product-card_content-btn {
   top: 25px;
   left: 25px;
@@ -973,6 +979,14 @@ margin-top: 160px;
     font-size: 28px;
     margin-top: 25px;
   }
+
+  .price-old-product_banner{
+    color: #fff;
+    text-decoration: line-through;
+    font-size: 12px;
+    margin-right: 10px;
+  }
+  
   .banner-desc .right .company-desc{
     font-size: 14px;
   }
@@ -999,6 +1013,11 @@ margin-top: 160px;
     margin-left: 0;
     z-index: 10000;
   }
+
+  .banner-desc button{
+    margin-top: 230px;
+  } 
+
   .desc{
    bottom: 60px;
   }

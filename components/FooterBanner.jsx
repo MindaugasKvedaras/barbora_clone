@@ -34,7 +34,7 @@ const FooterBanner = ({ product: { image, name, slug, price, advertise, discount
         <div className="right">
           {/* <p>{smalt}</p> */}
           <h3>{name}</h3>
-          <p>€{priceAfterDiscount()}</p>
+          <p><span className="price-old-product_banner">€{price}</span>€{priceAfterDiscount()}</p>
           <Link href={`/product/${slug.current}`}>
             <button type="button">Į krepšelį</button>
           </Link>
