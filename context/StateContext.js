@@ -12,7 +12,6 @@ export const StateContext = ({ children }) => {
     const [totalQuantities, setTotalQuantities] = useState(0);
     const [taraPrice, setTaraPrice] = useState(0);
     const [qty, setQty] = useState(1);
-    const [productQty, setProductQty] = useState(1);
 
 
     const onAdd = (product, quantity) => {
@@ -219,8 +218,6 @@ export const StateContext = ({ children }) => {
                 taraPrice,
                 onAddFromCard,
                 onRemoveFromCard,
-                productQty,
-                setProductQty,
                 toggleProductQty,
                 decQtyFromCard,
             }}

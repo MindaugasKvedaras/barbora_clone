@@ -1,7 +1,10 @@
 import React from 'react';
 import { AiFillInstagram, AiFillLinkedin, AiFillFacebook, AiFillYoutube } from 'react-icons/ai';
+import Link from  'next/link';
 
 const Footer = () => {
+
+  const barbora ="www.barbora.lt"
 
   const date = new Date();
   const currentYear = date.getFullYear();
@@ -9,7 +12,7 @@ const Footer = () => {
     <div className="footer-container">
       <p>Ⓒ {currentYear}  UAB „Barbora“. Visos teisės saugomos</p>
       <p className="icons">
-        <AiFillInstagram />
+        <a href="https://barbora.lt"><AiFillInstagram /></a>
         <AiFillLinkedin />
         <AiFillFacebook />
         <AiFillYoutube />

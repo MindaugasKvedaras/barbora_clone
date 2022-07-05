@@ -3,8 +3,12 @@ import Link from 'next/link';
 
 import { urlFor } from '../lib/client';
 
-const FooterBanner = ({ product: { image, name, slug, price, advertise, discount } }) => {
+import { useStateContext } from '../context/StateContext';
+
+const FooterBanner = ({ product, product: { image, name, slug, price, advertise, discount } }) => {
   
+  const { qty, onAdd } = useStateContext();
+
   const discountedPrice = (price * (1-(discount/100))).toFixed(2);
 
   const priceAfterDiscount = () => {
@@ -17,6 +21,7 @@ const FooterBanner = ({ product: { image, name, slug, price, advertise, discount
 
   
   return (
+    <Link href={`/product/${slug.current}`}>
     <div className="footer-banner-container">
       <div className="banner-desc">
         <div className="left">
@@ -35,12 +40,11 @@ const FooterBanner = ({ product: { image, name, slug, price, advertise, discount
           {/* <p>{smalt}</p> */}
           <h3>{name}</h3>
           <p><span className="price-old-product_banner">€{price}</span>€{priceAfterDiscount()}</p>
-          <Link href={`/product/${slug.current}`}>
-            <button type="button">Į krepšelį</button>
-          </Link>
         </div>
+            <button type="button" onClick={() => onAdd(product, qty)}>Į krepšelį</button>
       </div>
     </div>
+    </Link>
   )
 }
 

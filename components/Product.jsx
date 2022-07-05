@@ -9,8 +9,8 @@ import { useStateContext } from '../context/StateContext';
 
 const Product = ( {product }) => {
 
-  const { id, image, name, slug, amount, units, details, price, discount, tara, quantity } = product;
-  const { decQtyFromCard, setQty, cartItems, productQty, decQty, qty, incQty, onAdd, onRemove, onAddFromCard, onRemoveFromCard } = useStateContext();
+  const { image, name, slug, amount, units, price, discount, tara } = product;
+  const { decQtyFromCard, qty, incQty, onAdd, onRemoveFromCard } = useStateContext();
   const discountedPrice = (price * (1-(discount/100))).toFixed(2);
 
   const [visible, setVisible] = useState(false);
@@ -29,10 +29,6 @@ const Product = ( {product }) => {
   const handleRemoveFromCard = () => {
     onRemoveFromCard(product)
     setVisible(false);
-  }
-
-  const visibleTrue = () => {
-    setVisible(true);
   }
 
   const priceAfterDiscount = () => {

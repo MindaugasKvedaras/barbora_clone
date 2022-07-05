@@ -5,7 +5,7 @@ import { useStateContext } from '../context/StateContext';
 
 import { urlFor } from '../lib/client';
 
-const HeroBanner = ({ product: { image, name, slug, price, advertise, discount } }) => {
+const HeroBanner = ({ product, product: { image, name, slug, price, advertise, discount } }) => {
   
   const { qty, onAdd, setShowCart } = useStateContext();
 
@@ -41,7 +41,7 @@ const HeroBanner = ({ product: { image, name, slug, price, advertise, discount }
         className="hero-banner-image"/>
        </div> 
        </Link> 
-          <button type="button">Į krepšelį</button>
+          <button type="button" onClick={() => onAdd(product, qty)}>Į krepšelį</button>
           {/* <div className="desc">
           <h5>Aprašymas</h5>
           <p>{heroBanner.desc}</p>
