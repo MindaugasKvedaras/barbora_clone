@@ -9,7 +9,9 @@ const FooterBanner = ({ product, product: { image, name, slug, price, advertise,
   
   const { qty, onAdd } = useStateContext();
 
-  const discountedPrice = (price * (1-(discount/100))).toFixed(2);
+  const discountedPrice = (price * (1-(discount/100))).toFixed(2).replace(/\./g, ',');
+  const ltPrice = price.toFixed(2).replace(/\./g, ',');
+
 
   const priceAfterDiscount = () => {
     if(discount === 0) {
@@ -39,7 +41,7 @@ const FooterBanner = ({ product, product: { image, name, slug, price, advertise,
         <div className="right">
           {/* <p>{smalt}</p> */}
           <h3>{name}</h3>
-          <p><span className="price-old-product_banner">€{price}</span>€{priceAfterDiscount()}</p>
+          <p><span className="price-old-product_banner">€{ltPrice}</span>€{priceAfterDiscount()}</p>
         </div>
             <button type="button" onClick={() => onAdd(product, qty)}>Į krepšelį</button>
       </div>

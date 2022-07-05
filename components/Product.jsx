@@ -11,7 +11,10 @@ const Product = ( {product }) => {
 
   const { image, name, slug, amount, units, price, discount, tara } = product;
   const { decQtyFromCard, qty, incQty, onAdd, onRemoveFromCard } = useStateContext();
-  const discountedPrice = (price * (1-(discount/100))).toFixed(2);
+
+  const discountedPrice = (price * (1-(discount/100))).toFixed(2).replace(/\./g, ',');
+  const ltPrice = price.toFixed(2).replace(/\./g, ',');
+  const ltTaraPrice = tara.toFixed(2).replace(/\./g, ',');
 
   const [visible, setVisible] = useState(false);
 
@@ -33,21 +36,21 @@ const Product = ( {product }) => {
 
   const priceAfterDiscount = () => {
     if(discount === 0) {
-      return price;
+      return ltPrice
     } else {
-      return discountedPrice;
+      return discountedPrice
     }
   }
 
   const pricePerUnits = () => {
     if(amount > 1 & units === "vnt.") {
-      return "€" + (price/amount).toFixed(2) + "/" + units
+      return "€" + (price/amount).toFixed(2).replace(/\./g, ',') + "/" + units
     } else if (units === "g") {
-      return "€" + (price/(amount/1000)).toFixed(2) + "/kg"
+      return "€" + (price/(amount/1000)).toFixed(2).replace(/\./g, ',') + "/kg"
     } else if (amount > 1 & units === "l") {
-      return "€" + (price/amount).toFixed(2) + "/" + units
+      return "€" + (price/amount).toFixed(2).replace(/\./g, ',') + "/" + units
     } else if (amount === 1) {
-      return price + "/" + units
+      return ltPrice + "/" + units
     }
   }
 
@@ -81,7 +84,7 @@ const Product = ( {product }) => {
           
           {tara > 0 ? (
           <>
-            <p className='product-card-tara'>€{tara} x Tara</p>
+            <p className='product-card-tara'>€{ltTaraPrice} x Tara</p>
           </>
           ) : (
             null

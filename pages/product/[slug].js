@@ -6,7 +6,7 @@ import { Product } from '../../components';
 import { useStateContext } from '../../context/StateContext';
 
 const ProductDetails = ({ product, products, banner }) => {
-    const { image, name, details, price, discount, tara } = product;
+    const { image, name, details, price, discount, tara, amount, units } = product;
     const [index, setIndex] = useState(0);
     const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
   
@@ -16,15 +16,19 @@ const ProductDetails = ({ product, products, banner }) => {
       setShowCart(true);
     }
 
-    const discountedPrice = (price * (1-(discount/100))).toFixed(2);
+    const discountedPrice = (price * (1-(discount/100))).toFixed(2).replace(/\./g, ',');
+    const ltPrice = price.toFixed(2).replace(/\./g, ',');
+
 
     const priceAfterDiscount = () => {
       if(discount === 0) {
-        return price;
+        return ltPrice;
       } else {
         return discountedPrice;
       }
     }
+
+
   
 
     return (
@@ -34,7 +38,7 @@ const ProductDetails = ({ product, products, banner }) => {
                 <div className="image-container">
                     <img src={urlFor(image && image[index])} className="product-detail-image" />
                 </div>
-                <div className="small-images-container">
+                {/* <div className="small-images-container">
                     {image?.map((item, i) => (
                         <img
                         key={i} 
@@ -43,12 +47,11 @@ const ProductDetails = ({ product, products, banner }) => {
                         onMouseEnter={() => setIndex(i)}    
                         />
                     ))}
-
-                </div>
+                </div> */}
             </div>
             <div className="product-detail-desc">
-                <h1>{name}</h1>
-                <div className="reviews">
+                <h1>{name + ", " + amount + units}</h1>
+                {/* <div className="reviews">
                     <div>
                         <AiFillStar />
                         <AiFillStar />
@@ -57,12 +60,12 @@ const ProductDetails = ({ product, products, banner }) => {
                         <AiOutlineStar />
                     </div>
                     <p>(20)</p>
-                </div>
-                <h4>Prekės aprašymas:</h4>
-                <p>{details}</p>
+                </div> */}
+                {/* <h4>Prekės aprašymas:</h4>
+                <p>{details}</p> */}
                 {discount > 0 ? (
                   <>
-                  <p className="price-old">€{price}</p>
+                  <p className="price-old">€{ltPrice}</p>
                   <p className="price">€{priceAfterDiscount()}</p>
                   </>
                 ) : (

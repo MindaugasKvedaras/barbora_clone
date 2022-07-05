@@ -66,8 +66,8 @@ const Cart = () => {
               <img src={urlFor(item?.image[0])} className="cart-product-image" />
               <div className="item-desc">
                 <div className="flex top">
-                  <h5>{item.name}</h5>
-                  <h4>€{(item.price * (1-(item.discount/100))).toFixed(2)}</h4>
+                  <h5>{item.name + ", " + item.amount + item.units}</h5>
+                  <h4>€{(item.price * (1-(item.discount/100))).toFixed(2).replace(/\./g, ',')}</h4>
                 </div>
                 {/* <div className="product-container_tara-price">
                   <p>{item.tara != 0 ? "+€" + item.tara + "vnt. už tarą": null}</p>
@@ -101,20 +101,20 @@ const Cart = () => {
           <div className="cart-bottom">
             <div className="total">
               <h3>Mokėtina suma už prekes:</h3>
-              <h3>€{totalPrice.toFixed(2)}</h3>
+              <h3>€{totalPrice.toFixed(2).replace(/\./g, ',')}</h3>
             </div>
             {cartItems.find((item) => item.tara > 0) && (
             <>
             <div className="total-tara">
               <h4>Papildomas mokestis už tarą:</h4>
-              <h4>+ €{taraPrice.toFixed(2)} už {cartItems.map((item) => (
+              <h4>+ €{taraPrice.toFixed(2).replace(/\./g, ',')} už {cartItems.map((item) => (
                 <>{item.tara === 0 ? '' : item.quantity + " vnt."}</>
               ))}
               </h4>
             </div>
             <div className="total">
               <h3>Galutinė mokėtina suma:</h3>
-              <h3>€{subTotalPrice.toFixed(2)}</h3>
+              <h3>€{subTotalPrice.toFixed(2).replace(/\./g, ',')}</h3>
             </div>
             </>
         )}

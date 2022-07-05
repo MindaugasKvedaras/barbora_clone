@@ -4,8 +4,6 @@ import Link from  'next/link';
 
 const Footer = () => {
 
-  const barbora ="www.barbora.lt"
-
   const date = new Date();
   const currentYear = date.getFullYear();
   return (

@@ -15,16 +15,9 @@ const HeroBanner = ({ product, product: { image, name, slug, price, advertise, d
     if(discount === 0) {
       return price;
     } else {
-      return discountedPrice;
+      return discountedPrice.replace(/\./g, ',');;
     }
   }
-
-  const handleBuyNow = () => {
-    onAdd(product, qty);
-
-    setShowCart(true);
-  }
-
 
   return (
     <div className="hero-banner-container">

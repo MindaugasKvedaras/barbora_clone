@@ -1,4 +1,6 @@
-html,
+html {
+  background-color: var(--body-background);
+}
 body, * {
   padding: 0;
   margin: 0;
@@ -26,10 +28,11 @@ a {
 .main-container{
 max-width: 1600px; 
 margin: auto;
-margin-top: 10px;
 width: 100%;
-background-color: var(--body-background);
+padding-top: 5px;
+/* background-color: var(--body-background); */
 }
+
 .logo {
   margin: 15px;
   cursor: pointer;
@@ -44,7 +47,7 @@ background-color: var(--body-background);
   justify-content: space-between;
   margin: 5px 5px;
   position: relative;
-  background-color: var(--body-background);
+  background-color: #fff;
 
 }
 .marquee-text{
@@ -62,9 +65,8 @@ background-color: var(--body-background);
 
 .track {
   position: absolute;
-  white-space: nowrap;
   will-change: transform;
-  animation: marquee 15s linear infinite;
+  animation: marquee 20s linear infinite;
   width: 180%;
 }
 .track:hover {
@@ -248,6 +250,10 @@ background-color: var(--body-background);
   transition: 0.5s;
 }
 
+.product-card_content-btn:hover{
+  background-color: var(--green);
+}
+
 .product-card-image-price img {
   /* margin-top: 20px; */
   width: 180px;
@@ -264,6 +270,7 @@ background-color: var(--body-background);
   color: #fff;
   text-decoration: line-through;
   font-size: 12px;
+  margin-right: 10px;
 }
 /* .product-card:hover .product-card_content-btn {
   top: 25px;
@@ -338,9 +345,14 @@ background-color: var(--body-background);
   font-weight: 500;
   letter-spacing: 1px;
   border-radius: 30px;
-  text-transform: uppercase;
+  transition: 0.5s;
   cursor: pointer;
   z-index:10000 !important;
+}
+
+.hero-banner-container button:hover{
+  background-color: var(--green);
+  color: #fff;
 }
 
 .hero-banner-container h3{
@@ -436,8 +448,13 @@ text-align: end;
   margin-top: 250px;
   font-size: 18px;
   font-weight: 500;
-  text-transform: uppercase;
+  transition: 0.5s;
   cursor: pointer;
+}
+
+.banner-desc button:hover{
+  background-color: var(--green);
+  color: #fff;
 }
 .banner-desc .left h3{
   font-weight: 900;
@@ -520,6 +537,7 @@ text-align: end;
   align-items: center;
   gap: 10px;
   justify-content: center;
+  background-color: #fff;
 
 }
 .footer-container .icons{
@@ -565,14 +583,14 @@ padding: 20px 10px;
 }
 .product{
   display: flex;
- gap: 30px;
+  gap: 30px;
   padding: 20px;
+  border-bottom: 0.2px solid rgb(204, 202, 202);
 }
 .product .cart-product-image{
   width:180px ;
   height: 150px;
-    border-radius: 15px;
- background-color: #ebebeb;
+  border-radius: 15px;
 }
 .item-desc .flex{
   display: flex;
@@ -673,27 +691,22 @@ padding: 20px 10px;
 
 }
 .product-detail-container{
-  display: flex;
+ display: flex;
  gap: 40px;
- margin: 40px;
- margin-top: 60px;
+ margin: 20px 10px;
+ padding: 20px;
+ background-color: #fff;
  color: #324d67;
 
 }
 
 .product-detail-image{
   border-radius: 15px;
-   background-color: #ebebeb;
-
-  width: 400px;
-  height: 400px;
-  cursor: pointer;
+  width: 340px;
+  height: 280px;
   transition: .3s ease-in-out;
 }
-.product-detail-image:hover{
-  background-color: #f02d34;
 
-}
 .small-images-container{
   display: flex;
   gap: 10px;
@@ -726,8 +739,8 @@ padding: 20px 10px;
   margin-top: 0px;
 }
 .product-detail-desc .price{
-  font-weight: 700 ;
-  font-size: 26px;
+  font-weight: 500 ;
+  font-size: 30px;
   margin-top: 10px;
   color:#f02d34;
 }
@@ -767,7 +780,7 @@ padding: 20px 10px;
   background-color: white;
   color: #f02d34;
   cursor: pointer;
-  width: 200px;
+  width: 140px;
    transform: scale(1, 1);
   transition: transform 0.5s ease;
 }
@@ -775,7 +788,7 @@ padding: 20px 10px;
   transform:scale(1.1,1.1)
 }
 .buttons .buy-now{
-  width: 200px;
+  width: 140px;
 
   padding: 10px 20px;
   background-color: #f02d34;
@@ -847,13 +860,13 @@ padding: 20px 10px;
 }
 
 .maylike-products-wrapper{
-  margin-top: 120px;
+  margin: 20px 10px;
+  background-color: #fff;
 }
 .maylike-products-wrapper h2{
   text-align: center;
-  margin: 50px;
   color: #324d67;
-
+  padding: 20px 0;
   font-size: 28px;
 }
 .maylike-products-container{
@@ -993,7 +1006,6 @@ margin-top: 160px;
     color: #fff;
     text-decoration: line-through;
     font-size: 12px;
-    margin-right: 10px;
   }
   
   .banner-desc .right .company-desc{
@@ -1217,7 +1229,6 @@ margin-top: 160px;
   width: 550%;
 }
 .success-wrapper, .cancel-wrapper{
- 
   min-height: 69vh;
 }
 .success, .cancel {
