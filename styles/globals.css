@@ -422,7 +422,7 @@ text-align: end;
 .footer-banner-container{
   display: flex;
   padding: 60px 40px;
-  margin: 15px;
+  margin: 15px 5px;
   background-color: #f02d34;
   border-radius: 15px;
   position: relative;
@@ -441,7 +441,6 @@ text-align: end;
   border-radius: 30px;
   padding: 10px 16px;
   width: 30%;
-  height: 60px;
   background-color: white;
   color: red;
   border: none;
@@ -957,7 +956,7 @@ margin-top: 160px;
     align-items: center;
     padding: 0 20px;
     height: 500px;
-    margin: 15px;
+    margin: 5px;
     width: auto;
     line-height: 1.3;
 
@@ -1036,7 +1035,6 @@ margin-top: 160px;
   }
 
   .banner-desc button{
-    margin-top: 230px;
     margin-left: 45px;
     width: 70%;
   } 
