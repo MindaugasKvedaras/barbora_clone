@@ -46,6 +46,7 @@ export default {
             name: 'tara',
             title: 'Tara',
             type: 'number',
+            initialValue: 0,
         },
         {
             name: 'advertise',
@@ -56,6 +57,31 @@ export default {
             name: 'discount',
             title: 'Discount',
             type: 'number',
+            initialValue: 0,
+        },
+        {
+            name: 'category',
+            title: 'Category',
+            type:'string',
+            options: {
+                list: [
+                    {title: 'Pieno produktai', value: 'Pieno produktai'},
+                    {title: 'Vaisiai ir daržovės', value: 'Vaisiai ir daržovės'},
+                    {title: 'Gėrimai', value: 'Gėrimai'},
+                    {title: 'Duonos gaminiai ir konditerija', value: 'Duonos gaminiai ir konditerija'},
+                    {title: 'Kūdikių prekės', value: 'Kūdikių prekės'},
+                    {title: 'Mėsa, žuvis ir kulinarija', value: 'Mėsa, žuvis ir kulinarija'},
+
+
+                ]
+            }
+        },
+        {
+            name: 'popular',
+            title: 'Popular',
+            type:'string',
+            initialValue: 'ne',
+            
         },
         {
             name: 'details',
