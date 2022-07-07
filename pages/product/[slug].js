@@ -17,12 +17,12 @@ const ProductDetails = ({ product, products, banner }) => {
     }
 
     const discountedPrice = (price * (1-(discount/100))).toFixed(2).replace(/\./g, ',');
-    const ltPrice = price.toFixed(2).replace(/\./g, ',');
+    price === price.toFixed(2).replace(/\./g, ',');
 
 
     const priceAfterDiscount = () => {
       if(discount === 0) {
-        return ltPrice;
+        return price;
       } else {
         return discountedPrice;
       }
@@ -65,7 +65,7 @@ const ProductDetails = ({ product, products, banner }) => {
                 <p>{details}</p> */}
                 {discount > 0 ? (
                   <>
-                  <p className="price-old">€{ltPrice}</p>
+                  <p className="price-old">€{price}</p>
                   <p className="price">€{priceAfterDiscount()}</p>
                   </>
                 ) : (

@@ -7,7 +7,7 @@ import { urlFor } from '../lib/client';
 import { useStateContext } from '../context/StateContext';
 
 
-const Product = ( {product }) => {
+const Product = ( { product }) => {
 
   const { image, name, slug, amount, units, price, discount, tara, category } = product;
   const { decQtyFromCard, qty, incQty, onAdd, onRemove, onRemoveFromCard } = useStateContext();
@@ -15,8 +15,8 @@ const Product = ( {product }) => {
 
 
   const discountedPrice = (price * (1-(discount/100))).toFixed(2).replace(/\./g, ',');
-  const ltPrice = price.toFixed(2).replace(/\./g, ',');
-  const ltTaraPrice = tara.toFixed(2).replace(/\./g, ',');
+  // const ltPrice = price.toFixed(2).replace(/\./g, ',');
+  // const ltTaraPrice = tara.toFixed(2).replace(/\./g, ',');
 
   const [visible, setVisible] = useState(false);
 
@@ -42,10 +42,17 @@ const Product = ( {product }) => {
 
   const priceAfterDiscount = () => {
     if(discount === 0) {
-      return ltPrice
+      return ltPrice()
     } else {
       return discountedPrice
     }
+  } 
+  const ltPrice = () => {
+    return price.toFixed(2).replace(/\./g, ',');
+  }
+
+  const ltTaraPrice = () => {
+    return tara.toFixed(2).replace(/\./g, ',');
   }
 
   const pricePerUnits = () => {
@@ -56,7 +63,7 @@ const Product = ( {product }) => {
     } else if (amount > 1 & units === "l") {
       return "€" + (price/amount).toFixed(2).replace(/\./g, ',') + "/" + units
     } else if (amount === 1) {
-      return ltPrice + "/" + units
+      return ltPrice() + "/" + units
     }
   }
 
@@ -73,7 +80,7 @@ const Product = ( {product }) => {
         ) : (
           null
         )}
-        <Link href={`/product/${slug.current}`}>
+        <Link href={`/product/${slug?.current}`}>
 
         <div className="product-card-image-price">
            <img 
@@ -97,7 +104,7 @@ const Product = ( {product }) => {
           )}
           {discount > 0 ? (
             <>
-              <p><span className="price-old-product_card">€{price}</span> <span className="product-price">€{priceAfterDiscount()}</span></p>
+              <p><span className="price-old-product_card">€{ltPrice()}</span> <span className="product-price">€{priceAfterDiscount()}</span></p>
               
             </>
           ) : (
