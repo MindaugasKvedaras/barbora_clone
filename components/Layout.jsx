@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
   return (
     <div>
       <Head>
-        <title>BARBORA</title>
+        <title>BARBORAS</title>
         <link rel="icon" href="/barbora.png" />
       </Head>
       <header>
