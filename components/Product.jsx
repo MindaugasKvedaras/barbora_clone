@@ -97,7 +97,7 @@ const Product = ( { product }) => {
           
           {tara > 0 ? (
           <>
-            <p className='product-card-tara'>€{ltTaraPrice} x Tara</p>
+            <p className='product-card-tara'>€{ltTaraPrice()} x Tara</p>
           </>
           ) : (
             null
