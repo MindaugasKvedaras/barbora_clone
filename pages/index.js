@@ -84,7 +84,7 @@ return (
          {filterProducts.map((product) => <Product key={product._id} product={product} />)}
         </div>
        )} 
-      <div>
+      <div className="footer-banners">
         {filteredFooterBanner.map(product => {
           return (
          <FooterBanner key={product._id} product={product}  />

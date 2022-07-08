@@ -444,8 +444,18 @@ text-align: end;
   font-size: 16px;
   font-weight: 200;
 }
+
+.footer-banners {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  white-space: nowrap;    
+  overflow-x: scroll;
+}
+
 .footer-banner-container{
   display: flex;
+  flex-direction: row;
   padding: 60px 40px;
   margin: 15px 5px;
   background-color: #f02d34;
@@ -454,12 +464,13 @@ text-align: end;
   height: 400px;
   line-height: 1; 
   color: white;
-  width: auto;
+  width: 1000px;
   margin-top: 50px;
 }
 .banner-desc{
   display: flex;
   flex-direction: row;
+  /* white-space: pre; */
 }
 
 .banner-desc button{
@@ -518,10 +529,13 @@ text-align: end;
 
 .banner-desc .right{
   line-height: 1.4;
+  width: 800px
 }
 .banner-desc .right h3{
   font-weight: 800;
   font-size: 50px;
+  white-space: normal;
+
 }
 .banner-desc .right p{
   font-size: 28px;
@@ -1004,6 +1018,7 @@ margin-top: 160px;
   }
 
   .footer-banner-container{
+    width: 360px;
     height: 620px;
     margin-top: 40px;
     padding-top: 50px;
@@ -1018,6 +1033,10 @@ margin-top: 160px;
   }
   .banner-desc .left p{
     margin:18px;
+  }
+
+  .banner-desc{
+    width: 310px;
   }
   .banner-desc .right h3{
     font-size: 30px;
