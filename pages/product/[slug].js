@@ -51,6 +51,7 @@ const ProductDetails = ({ product, products, banner }) => {
             </div>
             <div className="product-detail-desc">
                 <h1>{name + ", " + amount + units}</h1>
+                <h3>Prekės kaina:</h3>
                 {/* <div className="reviews">
                     <div>
                         <AiFillStar />

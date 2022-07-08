@@ -44,9 +44,13 @@ padding-top: 5px;
 
 .navbar-container{
   display: flex;
+  width: 100%;
   justify-content: space-between;
-  margin: 5px 5px;
-  position: relative;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  /* margin: 0 3px; */
+  position: fixed;
+  z-index: 100;
   background-color: #fff;
 
 }
@@ -330,6 +334,7 @@ padding-top: 5px;
   /* position: relative; */
   height: 500px;
   margin: 15px;
+  margin-top: 80px;
   line-height: 0.9; 
   width: auto;
   z-index: 10;
@@ -448,7 +453,7 @@ text-align: end;
 .footer-banners {
   display: flex;
   flex-direction: row;
-  width: auto;
+  width: 100vw;
   white-space: nowrap;    
   overflow-x: scroll;
 }
@@ -770,7 +775,7 @@ padding: 20px 10px;
   align-items: center;
 }
 
-.product-detail-desc h4{
+.product-detail-desc h4, h3{
   margin-top: 10px;
 }
 .reviews p{
@@ -780,11 +785,10 @@ padding: 20px 10px;
 .product-detail-desc .price{
   font-weight: 500 ;
   font-size: 30px;
-  margin-top: 10px;
   color:#f02d34;
 }
 .price-old{
-  margin-top: 25px;
+  margin-top: 5px;
   color: gray;
   text-decoration: line-through;
 }
@@ -997,6 +1001,7 @@ margin-top: 160px;
     padding: 0 20px;
     height: 500px;
     margin: 5px;
+    margin-top: 55px;
     width: auto;
     line-height: 1.3;
 
@@ -1018,32 +1023,49 @@ margin-top: 160px;
   }
 
   .footer-banner-container{
-    width: 360px;
-    height: 620px;
+    width: 560px;
+    height: 300px;
+    padding: 20px 0 0 80px;
+    /* height: 620px;
     margin-top: 40px;
-    padding-top: 50px;
+    padding-top: 50px; */
   }
+
   .footer-banner-image{
-    top: 46%;
+    top: 36%;
+    width: 40%;
+    height: 50%;
   }
+
+  .left-discount{
+    font-size: 15px;
+  }
+
   .banner-desc .left h3{
     font-weight: 900;
-    font-size: 50px;
+    font-size: 30px;
     margin-left: 5px;
   }
   .banner-desc .left p{
     margin:18px;
   }
 
-  .banner-desc{
+  /* .banner-desc{
     width: 310px;
+    flex-wrap: wrap;
+    gap: 20px;
+  } */
+
+  .banner-desc .right{
+    width: 350px;
   }
+
   .banner-desc .right h3{
-    font-size: 30px;
+    font-size: 25px;
   }
   .banner-desc .right p{
     font-size: 28px;
-    margin-top: 25px;
+    margin-top: 20px;
   }
 
   .price-old-product_banner{
@@ -1054,10 +1076,6 @@ margin-top: 160px;
   
   .banner-desc .right .company-desc{
     font-size: 14px;
-  }
-  .banner-desc{
-    flex-wrap: wrap;
-    gap: 20px;
   }
   .hero-banner-container h1{
     text-align: center;
@@ -1080,8 +1098,9 @@ margin-top: 160px;
   }
 
   .banner-desc button{
-    margin-left: 45px;
-    width: 70%;
+    margin-top: 200px;
+    margin-right: 20px;
+    width: 30%;
   } 
 
   .desc{
