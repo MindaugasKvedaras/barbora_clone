@@ -1024,7 +1024,7 @@ margin-top: 160px;
 
   .footer-banner-container{
     width: 560px;
-    height: 300px;
+    height: 250px;
     padding: 20px 0 0 80px;
     /* height: 620px;
     margin-top: 40px;
@@ -1032,13 +1032,15 @@ margin-top: 160px;
   }
 
   .footer-banner-image{
-    top: 36%;
-    width: 40%;
-    height: 50%;
+    top: 34%;
+    margin-left: 200px;
+    width: 35%;
+    height: 35%;
   }
 
   .left-discount{
     font-size: 15px;
+    padding: 10px;
   }
 
   .banner-desc .left h3{
@@ -1057,11 +1059,11 @@ margin-top: 160px;
   } */
 
   .banner-desc .right{
-    width: 350px;
+    width: 300px;
   }
 
   .banner-desc .right h3{
-    font-size: 25px;
+    font-size: 20px;
   }
   .banner-desc .right p{
     font-size: 28px;
@@ -1098,9 +1100,13 @@ margin-top: 160px;
   }
 
   .banner-desc button{
-    margin-top: 200px;
-    margin-right: 20px;
-    width: 30%;
+    position: absolute;
+    margin-top: 180px;
+    margin-left: 65px;
+    font-size: 12px;
+    padding: 4px;
+    width: 100px;
+    height: 35px;
   } 
 
   .desc{

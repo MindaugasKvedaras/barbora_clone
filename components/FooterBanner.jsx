@@ -42,7 +42,7 @@ const FooterBanner = ({ product, product: { image, name, slug, price, advertise,
       <div className="banner-desc">
         <div className="left">
           <p className="left-discount">-{discount}%</p>
-          <h3>{advertise}</h3>
+          {/* <h3>{advertise}</h3> */}
           {/* <h3>{largeText2}</h3>
           <p>{saleTime}</p> */}
         </div>
